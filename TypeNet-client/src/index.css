@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-darkBg: #0b1120;
+  --color-darkCard: #1e293b;
+  --color-neonAccent: #3EB489;
+  --color-neonError: #ef4444;
+  --color-grayText: #94a3b8;
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-darkBg);
+    @apply text-slate-200 font-sans antialiased overflow-x-hidden;
+    /* subtle gradient mesh effect */
+    background-image: radial-gradient(circle at 15% 50%, rgba(62, 180, 137, 0.08), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08), transparent 25%);
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background-color: rgba(30, 41, 59, 0.8); /* darkCard with 80% opacity */
+  @apply backdrop-blur-md border border-slate-700/50 shadow-xl rounded-2xl;
+}
