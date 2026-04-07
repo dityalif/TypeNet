@@ -4,26 +4,22 @@ import { useCookies } from 'react-cookie';
 import { createScorePost } from "../actions/Score.action";
 import Navbar from '../components/Navbar';
 
-const indonesianWords = [
-  "aku", "kamu", "dia", "makan", "minum", "tidur", "lari", "jalan", "cepat", "lambat",
-  "besar", "kecil", "tinggi", "rendah", "panjang", "pendek", "buku", "meja", "kursi", "pintu",
-  "jendela", "rumah", "sekolah", "pasar", "kantor", "belajar", "bekerja", "bermain", "merah", "kuning",
-  "hijau", "biru", "hitam", "putih", "hari", "malam", "pagi", "sore", "siang", "besok",
-  "kemarin", "sekarang", "nanti", "kucing", "anjing", "burung", "ikan", "ayam", "sapi", "kambing",
-  "air", "api", "tanah", "angin", "hujan", "panas", "dingin", "udara", "awan", "matahari",
-  "bulan", "bintang", "gunung", "laut", "sungai", "danau", "pohon", "bunga", "daun", "batu",
-  "baik", "buruk", "indah", "jelek", "sedih", "senang", "marah", "takut", "cinta", "benci",
-  "satu", "dua", "tiga", "empat", "lima", "banyak", "sedikit", "semua", "tidak", "ya",
-  "dan", "atau", "tetapi", "karena", "jika", "mungkin", "pasti", "selalu", "kadang", "jarang",
-  "orang", "anak", "ayah", "ibu", "teman", "nama", "kata", "basa", "apa", "siapa",
-  "kapan", "dimana", "kenapa", "bagaimana", "ini", "itu", "sini", "situ", "sana", "begitu",
-  "sangat", "paling", "lebih", "kurang", "seperti", "sama", "beda", "baru", "lama", "tua"
+const englishWords = [
+  "the", "be", "to", "of", "and", "a", "in", "that", "have", "i", "it", "for", "not", "on", "with",
+  "he", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she",
+  "or", "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up", "out", "if", "about",
+  "who", "get", "which", "go", "me", "when", "make", "can", "like", "time", "no", "just", "him", "know", "take",
+  "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only",
+  "come", "its", "over", "think", "also", "back", "after", "use", "two", "how", "our", "work", "first", "well", "way",
+  "even", "new", "want", "because", "any", "these", "give", "day", "most", "us", "love", "hate", "friend", "name", "word",
+  "what", "who", "when", "where", "why", "how", "this", "that", "here", "there", "then", "now", "always", "never", "sometimes",
+  "very", "most", "more", "less", "much", "little", "same", "different", "new", "old", "young", "big", "small", "tall", "short"
 ];
 
 function generateRandomQuote(wordCount) {
   const result = [];
   for (let i = 0; i < wordCount; i++) {
-    result.push(indonesianWords[Math.floor(Math.random() * indonesianWords.length)]);
+    result.push(englishWords[Math.floor(Math.random() * englishWords.length)]);
   }
   return result.join(" ");
 }
