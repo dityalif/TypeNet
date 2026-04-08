@@ -16,8 +16,8 @@ export default function App() {
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/post" element={<Post />} />
+          <Route path="/game" element={cookies.isLoggedIn ? <Game /> : <Navigate to="/signup" />} />
+          <Route path="/post" element={cookies.isLoggedIn ? <Post /> : <Navigate to="/signup" />} />
           <Route path="*" element={<Navigate to='/game' />} />
         </Routes>
       </BrowserRouter>

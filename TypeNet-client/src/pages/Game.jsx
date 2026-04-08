@@ -35,7 +35,7 @@ export default function Game() {
   const [isTyping, setIsTyping] = useState(false);
 
   const [disabled, setDisabled] = useState(false);
-  const [buttonText, setButtonText] = useState("Reset Quote");
+  const [buttonText, setButtonText] = useState("Reset");
   const [cookies, setCookies] = useCookies(["score", "user_id"]);
   const [score, setScore] = useState(0);
   const [post, setPost] = useState(false);
@@ -92,7 +92,7 @@ export default function Game() {
         setScore(wpm);
         setCookies("score", wpm, { path: '/' });
       }
-      
+
       setButtonText("Replay");
       setDisabled(true);
       setIsTyping(false);
@@ -112,7 +112,7 @@ export default function Game() {
     startTimeRef.current = null;
     setIsTyping(false);
     setDisabled(false);
-    setButtonText("Reset Quote");
+    setButtonText("Reset");
     setPost(false);
 
     if (guessRef.current) {
@@ -153,7 +153,7 @@ export default function Game() {
 
           <header className="flex justify-between items-center mb-6 relative z-10">
             <h1 className="text-xl font-bold bg-gradient-to-r from-slate-200 to-slate-400 bg-clip-text text-transparent">
-              Terminal Sequence
+              Typing Test
             </h1>
             <p className="px-4 py-1.5 bg-slate-800/80 rounded-full text-neonAccent font-mono text-sm border border-slate-700/50 shadow-[0_0_10px_rgba(62,180,137,0.2)]" ref={scoreRef}>
               Highscore: 0 WPM
@@ -187,9 +187,9 @@ export default function Game() {
               autoComplete="off"
               className="w-full bg-[#0f172a]/60 font-mono text-lg text-slate-200 border-2 border-slate-700 rounded-xl px-6 py-4 focus:outline-none focus:border-neonAccent focus:bg-[#0f172a] focus:shadow-[0_0_20px_rgba(62,180,137,0.2)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             />
-            
-            <button 
-              onClick={handleStartReplay} 
+
+            <button
+              onClick={handleStartReplay}
               className="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-4 px-6 rounded-xl border border-slate-600 transition-all active:scale-[0.98] uppercase tracking-wider text-sm flex justify-center items-center gap-2"
             >
               <i className="fas fa-sync-alt"></i> {buttonText}
@@ -198,14 +198,14 @@ export default function Game() {
 
           {post && (
             <div className="mt-8 pt-6 border-t border-slate-700/50 flex flex-col md:flex-row gap-4 relative z-10 animate-[fadeIn_0.5s_ease-out]">
-              <input 
-                type="text" 
-                placeholder="Log a comment for the leaderboard..." 
+              <input
+                type="text"
+                placeholder="Log a comment for the leaderboard..."
                 onChange={(e) => setScoreText(e.target.value)}
-                className="flex-1 bg-slate-800/50 border border-slate-700 text-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors" 
+                className="flex-1 bg-slate-800/50 border border-slate-700 text-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors"
               />
-              <button 
-                onClick={postScore} 
+              <button
+                onClick={postScore}
                 className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-3 px-8 rounded-lg transition-transform active:scale-[0.98] uppercase tracking-wider text-sm shadow-[0_0_15px_rgba(6,182,212,0.4)] whitespace-nowrap"
               >
                 Transmit Score <i className="fas fa-satellite-dish ml-2"></i>
