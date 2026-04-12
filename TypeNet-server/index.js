@@ -1,15 +1,17 @@
 require("dotenv").config();
 
-const userRoutes = require('./routes/UserRoute');
-const scoreRoutes = require('./routes/ScoreRoute');
+const userRoutes = require("./routes/UserRoute");
+const scoreRoutes = require("./routes/ScoreRoute");
 
-const express = require('express');
-const cors = require('cors');
-const db = require('./config/db');
+const express = require("express");
+const cors = require("cors");
+const db = require("./config/db");
 
 const port = process.env.PORT;
 const app = express();
 
+const dns = require("node:dns");
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 // connect to database
 db.connectDB();
@@ -18,17 +20,16 @@ db.connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-    cors({
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true
-    })
+  cors({
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  }),
 );
 
-
 // status
-app.get('/status', (req, res) => {
-    res.status(200).send({ status: "Server is running" });
-})
+app.get("/status", (req, res) => {
+  res.status(200).send({ status: "Server is running" });
+});
 
 // redirect /user to userRoutes
 app.use("/user", userRoutes);
@@ -36,7 +37,6 @@ app.use("/user", userRoutes);
 // redirect /score to scoreRoutes
 app.use("/score", scoreRoutes);
 
-
 app.listen(port, () => {
-    console.log(`🚀 Server is running on PORT ${port}`);
-})
+  console.log(`🚀 Server is running on PORT ${port}`);
+});
